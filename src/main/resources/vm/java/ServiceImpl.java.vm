@@ -1,0 +1,18 @@
+package ${package}.service.impl;
+
+
+import ${package}.entity.${className};
+import ${package}.service.I${className}Service;
+import org.springframework.stereotype.Service;
+import com.honeybee.grace.tk.mybatis.core.service.impl.AbstractBaseLogicServiceImpl;
+
+/**
+ * ${tableComment} 服务层实现
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Service("${classname}")
+public class ${className}ServiceImpl extends AbstractBaseLogicServiceImpl<${className}> implements ${className}Service {
+
+}

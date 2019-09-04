@@ -1,0 +1,119 @@
+package ${basePackage}.web.controller.${moduleName};
+
+import java.util.List;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.easysite.exam.common.annotation.Log;
+import com.easysite.exam.common.enums.BusinessType;
+import ${package}.domain.${className};
+import ${package}.service.${className}Service;
+import com.easysite.exam.common.core.controller.BaseController;
+import com.easysite.exam.common.core.page.TableDataInfo;
+import com.easysite.exam.common.core.domain.AjaxResult;
+import com.easysite.exam.common.utils.poi.ExcelUtil;
+
+/**
+ * ${tableComment} 信息操作处理
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Controller
+@RequestMapping("${path}")
+public class ${className}Controller extends BaseController {
+
+    private String prefix = "${templatePath}";
+
+	@Autowired
+	private ${className}Service ${classname}Service;
+
+	@RequiresPermissions("${permissionPre}:view")
+	@GetMapping()
+	public String ${classname}() {
+	    return prefix + "/list";
+	}
+
+	/**
+	 * 查询${tableComment}列表
+	 */
+	@RequiresPermissions("${permissionPre}:list")
+	@PostMapping("/list")
+	@ResponseBody
+	public TableDataInfo list(${className} ${classname}) {
+		startPage();
+        List<${className}> list = ${classname}Service.select(${classname});
+		return getDataTable(list);
+	}
+
+	/**
+	 * 导出${tableComment}列表
+	 */
+	@RequiresPermissions("${permissionPre}:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(${className} ${classname}) {
+    	List<${className}> list = ${classname}Service.select(${classname});
+        ExcelUtil<${className}> util = new ExcelUtil<>(${className}.class);
+        return util.exportExcel(list, "${classname}");
+    }
+
+	/**
+	 * 新增${tableComment}
+	 */
+	@GetMapping("/add")
+	public String add() {
+	    return prefix + "/add";
+	}
+
+	/**
+	 * 新增保存${tableComment}
+	 */
+	@RequiresPermissions("${permissionPre}:add")
+	@Log(title = "${tableComment}", businessType = BusinessType.INSERT)
+	@PostMapping("/add")
+	@ResponseBody
+	public AjaxResult addSave(${className} ${classname}) {
+		return toAjax(${classname}Service.insert(${classname}));
+	}
+
+	/**
+	 * 修改${tableComment}
+	 */
+	@GetMapping("/edit/{${primaryKey.attrname}}")
+	public String edit(@PathVariable("${primaryKey.attrname}") ${primaryKey.attrType} ${primaryKey.attrname}, ModelMap mmap) {
+		${className} ${classname} = ${classname}Service.selectByPk(${primaryKey.attrname});
+		mmap.put("${classname}", ${classname});
+	    return prefix + "/edit";
+	}
+
+	/**
+	 * 修改保存${tableComment}
+	 */
+	@RequiresPermissions("${permissionPre}:edit")
+	@Log(title = "${tableComment}", businessType = BusinessType.UPDATE)
+	@PostMapping("/edit")
+	@ResponseBody
+	public AjaxResult editSave(${className} ${classname}) {
+		return toAjax(${classname}Service.update(${classname}));
+	}
+
+	/**
+	 * 删除${tableComment}
+	 */
+	@RequiresPermissions("${permissionPre}:remove")
+	@Log(title = "${tableComment}", businessType = BusinessType.DELETE)
+	@PostMapping( "/remove")
+	@ResponseBody
+	public AjaxResult remove(@RequestParam("ids") List<Long> ids) {
+		return toAjax(${classname}Service.deleteByPks(ids));
+	}
+
+}

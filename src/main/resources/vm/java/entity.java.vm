@@ -1,0 +1,48 @@
+package ${package}.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import java.util.Date;
+import lombok.NoArgsConstructor;
+import com.honeybee.grace.tk.mybatis.core.entity.BaseLogicEntity;
+
+#foreach ($column in $columns)
+#if($column.attrType == 'Date' && ($column.attrname != 'createBy' && $column.attrname != 'createTime' && $column.attrname != 'updateBy' && $column.attrname != 'updateTime' && $column.attrname != 'remark'))
+
+#break
+#end
+#end
+#foreach ($column in $columns)
+#if($column.attrType == 'BigDecimal')
+import java.math.BigDecimal;
+#break
+#end
+#end
+
+/**
+ * ${tableComment}表 ${tableName}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Entity
+@Table(name = "${tableName}")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ${className} extends BaseLogicEntity{
+	private static final long serialVersionUID = 1L;
+
+#foreach ($column in $columns)
+#if($column.attrname != 'serverCreateTime' && $column.attrname != 'serverUpdateTime' && $column.attrname != 'operating' && $column.attrname != 'deleted' && $column.attrname != 'id')
+	/** $column.columnComment */
+	@Column(name = "$column.columnName")
+	private $column.attrType $column.attrname;
+
+#end
+#end
+
+}

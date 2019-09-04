@@ -1,0 +1,13 @@
+package ${package}.service;
+
+import ${package}.entity.${className};
+import com.honeybee.grace.tk.mybatis.core.service.BaseLogicService;
+
+/**
+ * ${tableComment} 服务层
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends BaseLogicService<${className}> {
+}
