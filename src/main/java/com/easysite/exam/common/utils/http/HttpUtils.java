@@ -18,7 +18,7 @@ import java.security.cert.X509Certificate;
  */
 public class HttpUtils
 {
-    private static final Logger log = LoggerFactory.getLogger(com.easysite.exam.common.utils.http.HttpUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(HttpUtils.class);
 
     /**
      * 向指定 URL 发送GET方法的请求

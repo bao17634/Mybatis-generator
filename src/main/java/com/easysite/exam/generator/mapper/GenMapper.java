@@ -3,6 +3,8 @@ package com.easysite.exam.generator.mapper;
 import com.easysite.exam.generator.domain.ColumnInfo;
 import com.easysite.exam.generator.domain.TableInfo;
 import org.apache.ibatis.annotations.Mapper;
+import tk.mybatis.mapper.common.BaseMapper;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -12,8 +14,8 @@ import java.util.List;
  * @author ruoyi
  */
 @Mapper
-public interface GenMapper
-{
+public interface GenMapper {
+
     /**
      * 查询ry数据库表信息
      *

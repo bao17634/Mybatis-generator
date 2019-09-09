@@ -73,7 +73,7 @@ public class JSONObject extends LinkedHashMap<String, Object>
         super();
     }
 
-    public JSONObject(final com.easysite.exam.common.json.JSONObject other)
+    public JSONObject(final JSONObject other)
     {
         super(other);
     }
@@ -241,7 +241,7 @@ public class JSONObject extends LinkedHashMap<String, Object>
      * @param value 字段值。
      * @return 返回本对象。
      */
-    public com.easysite.exam.common.json.JSONObject value(final String name, final Object value)
+    public JSONObject value(final String name, final Object value)
     {
         final int indexDot = name.indexOf('.');
         if (indexDot >= 0)
@@ -277,15 +277,15 @@ public class JSONObject extends LinkedHashMap<String, Object>
      * @param name 字段名。不支持多级名字，支持数组下标。
      * @return 返回指定的对象。如果对象不存在，则为指定的名字创建一个空的MessageObject对象。
      */
-    public com.easysite.exam.common.json.JSONObject obj(final String name)
+    public JSONObject obj(final String name)
     {
         final Matcher matcher = arrayNamePattern.matcher(name);
         if (matcher.find())
         {
-            return endArray(matcher.group(1), matcher.group(2), new EndArrayCallback<com.easysite.exam.common.json.JSONObject>()
+            return endArray(matcher.group(1), matcher.group(2), new EndArrayCallback<JSONObject>()
             {
                 @Override
-                public com.easysite.exam.common.json.JSONObject callback(JSONArray arr, int index)
+                public JSONObject callback(JSONArray arr, int index)
                 {
                     return objAt(arr, index);
                 }
@@ -293,10 +293,10 @@ public class JSONObject extends LinkedHashMap<String, Object>
         }
         else
         {
-            com.easysite.exam.common.json.JSONObject obj = getObj(name);
+            JSONObject obj = getObj(name);
             if (obj == null)
             {
-                obj = new com.easysite.exam.common.json.JSONObject();
+                obj = new JSONObject();
                 put(name, obj);
             }
             return obj;
@@ -326,9 +326,9 @@ public class JSONObject extends LinkedHashMap<String, Object>
      * @param name 字段名。
      * @return 返回指定的对象字段。
      */
-    public com.easysite.exam.common.json.JSONObject getObj(final String name)
+    public JSONObject getObj(final String name)
     {
-        return (com.easysite.exam.common.json.JSONObject) get(name);
+        return (JSONObject) get(name);
     }
 
     /**
@@ -442,7 +442,7 @@ public class JSONObject extends LinkedHashMap<String, Object>
      *            （此时，再修改Map中的数据，将不会体现到本对象中）。
      * @return 返回本对象
      */
-    public com.easysite.exam.common.json.JSONObject set(final String name, final Object value)
+    public JSONObject set(final String name, final Object value)
     {
         put(name, value);
         return this;
@@ -569,7 +569,7 @@ public class JSONObject extends LinkedHashMap<String, Object>
     @SuppressWarnings("unchecked")
     private static Object transfer(final Object value)
     {
-        if (!(value instanceof com.easysite.exam.common.json.JSONObject) && value instanceof Map)
+        if (!(value instanceof JSONObject) && value instanceof Map)
         {
             return toObj((Map<String, Object>) value);
         }
@@ -593,9 +593,9 @@ public class JSONObject extends LinkedHashMap<String, Object>
         return arr;
     }
 
-    private static com.easysite.exam.common.json.JSONObject toObj(final Map<String, Object> map)
+    private static JSONObject toObj(final Map<String, Object> map)
     {
-        final com.easysite.exam.common.json.JSONObject obj = new com.easysite.exam.common.json.JSONObject();
+        final JSONObject obj = new JSONObject();
         for (final Map.Entry<String, Object> ent : map.entrySet())
         {
             obj.put(ent.getKey(), transfer(ent.getValue()));
@@ -627,14 +627,14 @@ public class JSONObject extends LinkedHashMap<String, Object>
      * @param index 下标。
      * @return 返回当前数组指定下标元素，该元素是一个结构体。
      */
-    private static com.easysite.exam.common.json.JSONObject objAt(final JSONArray arr, int index)
+    private static JSONObject objAt(final JSONArray arr, int index)
     {
         expand(arr, index);
         if (arr.get(index) == null)
         {
-            arr.set(index, new com.easysite.exam.common.json.JSONObject());
+            arr.set(index, new JSONObject());
         }
-        return (com.easysite.exam.common.json.JSONObject) arr.get(index);
+        return (JSONObject) arr.get(index);
     }
 
     /**

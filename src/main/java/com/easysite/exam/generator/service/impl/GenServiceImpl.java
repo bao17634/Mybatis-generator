@@ -33,7 +33,7 @@ import java.util.zip.ZipOutputStream;
 @Service
 public class GenServiceImpl implements IGenService
 {
-    private static final Logger log = LoggerFactory.getLogger(com.easysite.exam.generator.service.impl.GenServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(GenServiceImpl.class);
 
     @Autowired
     private GenMapper genMapper;

@@ -17,7 +17,7 @@ import java.beans.PropertyDescriptor;
  */
 public class PermissionUtils
 {
-    private static final Logger log = LoggerFactory.getLogger(com.easysite.exam.common.utils.security.PermissionUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(PermissionUtils.class);
 
     /**
      * 查看数据的权限

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  */
 public class DynamicDataSourceContextHolder
 {
-    public static final Logger log = LoggerFactory.getLogger(com.easysite.exam.common.config.datasource.DynamicDataSourceContextHolder.class);
+    public static final Logger log = LoggerFactory.getLogger(DynamicDataSourceContextHolder.class);
 
     /**
      * 使用ThreadLocal维护变量，ThreadLocal为每个使用该变量的线程提供独立的变量副本，

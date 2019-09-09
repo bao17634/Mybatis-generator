@@ -21,7 +21,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException
     {
-        com.easysite.exam.common.utils.spring.SpringUtils.beanFactory = beanFactory;
+        SpringUtils.beanFactory = beanFactory;
     }
 
     /**

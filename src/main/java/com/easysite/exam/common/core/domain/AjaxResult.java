@@ -98,7 +98,7 @@ public class AjaxResult extends HashMap<String, Object>
      *
      * @return 成功消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult success()
+    public static AjaxResult success()
     {
         return success("操作成功");
     }
@@ -108,7 +108,7 @@ public class AjaxResult extends HashMap<String, Object>
      *
      * @return 成功消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult success(Object data)
+    public static AjaxResult success(Object data)
     {
         return success("操作成功", data);
     }
@@ -119,7 +119,7 @@ public class AjaxResult extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 成功消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult success(String msg)
+    public static AjaxResult success(String msg)
     {
         return success(msg, null);
     }
@@ -131,9 +131,9 @@ public class AjaxResult extends HashMap<String, Object>
      * @param data 数据对象
      * @return 成功消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult success(String msg, Object data)
+    public static AjaxResult success(String msg, Object data)
     {
-        return new com.easysite.exam.common.core.domain.AjaxResult(Type.SUCCESS, msg, data);
+        return new AjaxResult(Type.SUCCESS, msg, data);
     }
 
     /**
@@ -142,7 +142,7 @@ public class AjaxResult extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult warn(String msg)
+    public static AjaxResult warn(String msg)
     {
         return warn(msg, null);
     }
@@ -154,9 +154,9 @@ public class AjaxResult extends HashMap<String, Object>
      * @param data 数据对象
      * @return 警告消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult warn(String msg, Object data)
+    public static AjaxResult warn(String msg, Object data)
     {
-        return new com.easysite.exam.common.core.domain.AjaxResult(Type.WARN, msg, data);
+        return new AjaxResult(Type.WARN, msg, data);
     }
 
     /**
@@ -164,7 +164,7 @@ public class AjaxResult extends HashMap<String, Object>
      *
      * @return
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult error()
+    public static AjaxResult error()
     {
         return error("操作失败");
     }
@@ -175,7 +175,7 @@ public class AjaxResult extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult error(String msg)
+    public static AjaxResult error(String msg)
     {
         return error(msg, null);
     }
@@ -187,9 +187,9 @@ public class AjaxResult extends HashMap<String, Object>
      * @param data 数据对象
      * @return 警告消息
      */
-    public static com.easysite.exam.common.core.domain.AjaxResult error(String msg, Object data)
+    public static AjaxResult error(String msg, Object data)
     {
-        return new com.easysite.exam.common.core.domain.AjaxResult(Type.ERROR, msg, data);
+        return new AjaxResult(Type.ERROR, msg, data);
     }
 
     public Type getType()

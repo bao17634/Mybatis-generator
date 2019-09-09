@@ -12,7 +12,7 @@ import java.security.MessageDigest;
  */
 public class Md5Utils
 {
-    private static final Logger log = LoggerFactory.getLogger(com.easysite.exam.common.utils.security.Md5Utils.class);
+    private static final Logger log = LoggerFactory.getLogger(Md5Utils.class);
 
     private static byte[] md5(String s)
     {

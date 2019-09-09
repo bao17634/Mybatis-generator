@@ -31,7 +31,7 @@ public class GenConfig
     @Value("${gen.author}")
     public void setAuthor(String author)
     {
-        com.easysite.exam.generator.config.GenConfig.author = author;
+        GenConfig.author = author;
     }
 
     public static String getPackageName()
@@ -42,7 +42,7 @@ public class GenConfig
     @Value("${gen.packageName}")
     public void setPackageName(String packageName)
     {
-        com.easysite.exam.generator.config.GenConfig.packageName = packageName;
+        GenConfig.packageName = packageName;
     }
 
     public static String getAutoRemovePre()
@@ -53,7 +53,7 @@ public class GenConfig
     @Value("${gen.autoRemovePre}")
     public void setAutoRemovePre(String autoRemovePre)
     {
-        com.easysite.exam.generator.config.GenConfig.autoRemovePre = autoRemovePre;
+        GenConfig.autoRemovePre = autoRemovePre;
     }
 
     public static String getTablePrefix()
@@ -64,6 +64,6 @@ public class GenConfig
     @Value("${gen.tablePrefix}")
     public void setTablePrefix(String tablePrefix)
     {
-        com.easysite.exam.generator.config.GenConfig.tablePrefix = tablePrefix;
+        GenConfig.tablePrefix = tablePrefix;
     }
 }
