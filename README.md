@@ -1,3 +1,2 @@
-# mybatis generato代码自动生成
-
-从 ruoyi 开源项目中拆出来的 一个代码生成器
+# mybatis代码自动生成
+目前仅支持mysql数据库，后续更新将支持其他数据库。
